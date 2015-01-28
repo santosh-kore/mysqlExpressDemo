@@ -5,15 +5,15 @@ var mysql = require('mysql');
 /* GET home page. */
 router.get('/', function(req, res) {
     var connection = mysql.createConnection({
-        host: 'pppdc9prd0tl.corp.intuit.net',
-        user: 'wptdashboard',
-        password: 'test1234',
-        database: "wpt"
+        host: '<your host name>',
+        user: '<username>',
+        password: '<password>',
+        database: "<db name>"
     });
 
     connection.connect();
 
-    connection.query('SELECT * from PropertyList', function(err, rows, fields) {
+    connection.query('SELECT * from <table name>', function(err, rows, fields) {
         if (err) throw err;
         console.log('The solution is: ');
         res.json({
