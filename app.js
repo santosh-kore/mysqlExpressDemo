@@ -8,6 +8,8 @@ var mysql = require('mysql');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var properties = require('./routes/properties');
+var productionUrls = require('./routes/production_urls');
 
 var app = express();
 
@@ -25,6 +27,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
+app.use('/properties', properties);
+app.use('/wpturls', productionUrls);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

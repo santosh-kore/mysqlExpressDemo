@@ -1,0 +1,42 @@
+extends layout
+
+block content
+	h1= title
+	form#new-wpt-entry-form(method="post", action="/wpturls/createUrl")
+		label(for="property-select") Property
+		select#property-select(name="PropertyName")
+			each property in properties
+				option(value=property.PropertyName) #{property.PropertyName}
+		br
+		label(for="url") URL
+		input#url(type="url", name="URL")
+		br
+		label
+			| WPT Location
+			input#wpt-location(type="text", name="wptLocation")
+		br
+		label
+			| Home Page
+			input#home-page(type="checkbox", name="HomePageURL")
+		br
+		label
+			| Global NA
+			input#global-na(type="checkbox", name="IG_NA")
+		label
+			| Global Asia
+			input#global-asia(type="checkbox", name="IG_Asia")
+		br
+		label
+			| Global Europe
+			input#global-europe(type="checkbox", name="IG_Europe")
+		label
+			| Global APAC
+			input#global-apac(type="checkbox", name="IG_APAC")
+		br
+		input(type="reset", value='Reset')
+		input(type="submit", value='Submit')
+
+		
+
+
+

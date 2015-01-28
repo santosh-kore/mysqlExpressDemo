@@ -1,0 +1,24 @@
+extends layout
+
+block content
+	h1 URLs List
+	table(border="1",cellpadding="10")
+		tr
+			th URL
+			th
+			th
+			th
+		each url in urlsData
+			tr
+				td #{url.URL}
+				td
+					a(href="/wpturls/#{url.ID}") Get Details
+				td
+					a(href="/wpturls/#{url.ID}/edit") Edit Details
+				td
+					form(method="post", action="/wpturls/#{url.ID}")
+						input(type="hidden", value="#{url.ID}", name="id")
+						input(type="hidden", name="_method", value="delete")
+						button(type="submit") Delete
+	<br>
+	<br>

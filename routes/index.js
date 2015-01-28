@@ -1,33 +1,12 @@
 var express = require('express');
 var router = express.Router();
-var mysql = require('mysql');
+var dbUtils = require("../appUtils/dbUtils");
 
-/* GET home page. */
+/* GET home page or page to add/create new WPT url */
 router.get('/', function(req, res) {
-    var connection = mysql.createConnection({
-        host: '<your host name>',
-        user: '<username>',
-        password: '<password>',
-        database: "<db name>"
+    dbUtils.getAllProperties(function(properties) {
+        res.render("index", {title: "Self Sufficient Project", properties: properties});
     });
-
-    connection.connect();
-
-    connection.query('SELECT * from <table name>', function(err, rows, fields) {
-        if (err) throw err;
-        console.log('The solution is: ');
-        res.json({
-            'propertyList': rows
-        })
-        
-    });
-
-    connection.end();
-});
-
-router.get('/validate', function(req, res) {
-    console.log("add");
-    res.render('newuser', {});
 });
 
 module.exports = router;

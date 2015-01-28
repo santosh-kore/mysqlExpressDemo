@@ -1,0 +1,16 @@
+extends layout
+
+block content
+	h1= title
+	form#search-url-form(method="get", action="/wpturls/getUrls")
+		label(for="property-select") Property
+		select#property-select(name="PropertyName")
+			each property in properties
+				option(value=property.PropertyName) #{property.PropertyName}
+		br
+		input(type="submit", value='Search')
+
+		
+
+
+
