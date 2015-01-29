@@ -1,0 +1,62 @@
+extends layout
+
+block content
+	h1= title
+	form#edit-url-data(method="post",action="/wpturls/url/edit")
+		table
+			tr
+				td URL
+				td 
+					input(type="url",value="#{urlData.URL}",name="URL")
+			tr
+				td PropertyName
+				td 
+					input(type="text",value="#{urlData.PropertyName}",name="PropertyName")
+			tr
+				td wptLocation
+				td
+					input(type="text",value="#{urlData.wptLocation}",name="wptLocation")
+			tr
+				td Status
+				td
+					input(type="hidden", name="Status", value=0)
+					input(type="checkbox",checked="#{urlData.Status}"==="Y",name="Status")
+			tr
+				td HomePageURL
+				td
+					input(type="hidden", name="HomePageURL", value=0)
+					input(type="checkbox",checked="#{urlData.HomePageURL}"==="Y",name="HomePageURL")
+			tr
+				td Global NA
+				td
+					input(type="hidden", name="IG_NA", value=0)
+					input(type="checkbox",checked="#{urlData.IG_NA}"==="Y",name="IG_NA")
+			tr
+				td Global Asia
+				td
+					input(type="hidden", name="IG_Asia", value=0)
+					input(type="checkbox",checked="#{urlData.IG_Asia}"==="Y",name="IG_Asia")
+			tr
+				td Global APAC
+				td
+					input(type="hidden", name="IG_APAC", value=0)
+					input(type="checkbox",checked="#{urlData.IG_APAC}"==="Y",name="IG_APAC")
+			tr
+				td Global Europe
+				td
+					input(type="hidden", name="IG_Europe", value=0)
+					input(type="checkbox",checked="#{urlData.IG_Europe}"==="Y",name="IG_Europe")
+			tr
+				td
+				td
+					input(type="submit",value="Update")
+		input(type="hidden", name="ID", value="#{urlData.ID}")
+		input(type="hidden", name="_method", value="put")
+
+
+	a(href="/wpturls/getUrls?PropertyName=#{urlData.PropertyName}") Go Back
+
+		
+
+
+

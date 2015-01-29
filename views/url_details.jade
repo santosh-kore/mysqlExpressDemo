@@ -1,0 +1,36 @@
+extends layout
+
+block content
+	h1= title
+	table(border="1",cellpadding="10")
+		tr
+			td URL
+			td #{urlData.URL}
+		tr
+			td PropertyName
+			td #{urlData.PropertyName}
+		tr
+			td wptLocation
+			td #{urlData.wptLocation}
+		tr
+			td HomePageURL
+			td #{urlData.HomePageURL}
+		tr
+			td Global NA
+			td #{urlData.IG_NA}
+		tr
+			td Global Asia
+			td #{urlData.IG_Asia}
+		tr
+			td Global APAC
+			td #{urlData.IG_APAC}
+		tr
+			td Global Europe
+			td #{urlData.IG_Europe}
+
+	a(href="/wpturls/getUrls?PropertyName=#{urlData.PropertyName}") Go Back
+
+		
+
+
+

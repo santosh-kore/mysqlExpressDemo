@@ -12,12 +12,13 @@ block content
 			tr
 				td #{url.URL}
 				td
-					a(href="/wpturls/#{url.ID}") Get Details
+					a(href="/wpturls/url/#{url.ID}/#{url.PropertyName}") Get Details
 				td
-					a(href="/wpturls/#{url.ID}/edit") Edit Details
+					a(href="/wpturls/url/#{url.ID}/#{url.PropertyName}/edit") Edit Details
 				td
-					form(method="post", action="/wpturls/#{url.ID}")
+					form(method="post", action="/wpturls/url/#{url.ID}/#{url.PropertyName}/delete")
 						input(type="hidden", value="#{url.ID}", name="id")
+						input(type="hidden", value="#{url.PropertyName}", name="PropertyName")
 						input(type="hidden", name="_method", value="delete")
 						button(type="submit") Delete
 	<br>

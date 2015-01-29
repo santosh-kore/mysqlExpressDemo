@@ -26,10 +26,47 @@ router.get('/searchURLs', function(req, res) {
 
 /* Fetch all URLs by given property name */
 router.get('/getUrls', function(req, res) {
-    console.log(req.query);
     dbUtils.fetchURLsByProperty(req.query.PropertyName, function(urlsData) {
-        console.log(urlsData);
         res.render("urls_list", {title: "Self Sufficient Project", urlsData: urlsData});
     });
 });
+
+/* Fetch URL by given id */
+router.get('/url/:id/:prop', function(req, res) {
+    dbUtils.fetchURLByID(req.params.id, function(urlData) {
+        res.render("url_details", {title: "URL Details", urlData: urlData});
+    });
+});
+
+/* Delete URL by ID */
+router.delete('/url/:id/:prop/delete', function(req, res) {
+    dbUtils.deleteURLByID({ id: req.body.id, propName: req.body.PropertyName }, function(result) {
+        res.location("wpturls");
+        res.redirect("/wpturls/getUrls?PropertyName=" + req.body.PropertyName);
+    });
+});
+
+/* Render edit URL view with URL data */
+router.get('/url/:id/:prop/edit', function(req, res) {
+    dbUtils.fetchURLByID(req.params.id, function(urlData) {
+        res.render("edit_url", {title: "Edit URL Details", urlData: urlData});
+    });
+});
+
+/* Render edit URL view with URL data */
+router.get('/url/:id/:prop/edit', function(req, res) {
+    dbUtils.fetchURLByID(req.params.id, function(urlData) {
+        res.render("edit_url", {title: "Edit URL Details", urlData: urlData});
+    });
+});
+
+/* Edit URL data */
+router.put('/url/edit', function(req, res) {
+    dbUtils.updateURLData(req.body, function(urlData) {
+        res.location("wpturls");
+        res.redirect("/wpturls/getUrls?PropertyName=" + req.body.PropertyName);
+    });
+    //res.json({"req": req.body});
+});
+
 module.exports = router;
