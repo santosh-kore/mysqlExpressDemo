@@ -2,41 +2,55 @@ extends layout
 
 block content
 	h1= title
-	form#new-wpt-entry-form(method="post", action="/wpturls/createUrl")
-		label(for="property-select") Property
-		select#property-select(name="PropertyName")
-			each property in properties
-				option(value=property.PropertyName) #{property.PropertyName}
-		br
-		label(for="url") URL
-		input#url(type="url", name="URL")
-		br
-		label
-			| WPT Location
-			input#wpt-location(type="text", name="wptLocation")
-		br
-		label
-			| Home Page
-			input#home-page(type="checkbox", name="HomePageURL")
-		br
-		label
-			| Global NA
-			input#global-na(type="checkbox", name="IG_NA")
-		label
-			| Global Asia
-			input#global-asia(type="checkbox", name="IG_Asia")
-		br
-		label
-			| Global Europe
-			input#global-europe(type="checkbox", name="IG_Europe")
-		label
-			| Global APAC
-			input#global-apac(type="checkbox", name="IG_APAC")
-		br
-		input(type="reset", value='Reset')
-		input(type="submit", value='Submit')
-
-		
-
+	div(class="container")
+		form#new-wpt-entry-form(method="post", action="/wpturls/createUrl",role="form")
+			div(class="form-group")
+				label(for="property-select",class="control-label col-xs-2") Property
+				div(class="col-xs-10")
+					select#property-select(name="PropertyName",class="form-control")
+						each property in properties
+							option(value=property.PropertyName) #{property.PropertyName}
+			div(class="form-group")
+				label(for="url",class="control-label col-xs-2") URL
+				div(class="col-xs-10")
+					input#url(type="url", name="URL",class="form-control",required)
+			div(class="form-group")
+				label(class="control-label col-xs-2") WPT Location
+				div(class="col-xs-10")
+					input#wpt-location(type="text", name="wptLocation",class="form-control",required)
+			div(class="form-group")
+				div(class="col-xs-offset-2 col-xs-10")
+					div(class="checkbox")
+						label Home Page
+							input#home-page(type="checkbox", name="HomePageURL")
+			div(class="form-group")
+				div(class="col-xs-offset-2 col-xs-10")
+					div(class="checkbox")
+						label Global NA
+							input#global-na(type="checkbox", name="IG_NA")
+			div(class="form-group")
+				div(class="col-xs-offset-2 col-xs-10")
+					div(class="checkbox")
+						label Global Asia
+							input#global-na(type="checkbox", name="IG_Asia")
+			div(class="form-group")
+				div(class="col-xs-offset-2 col-xs-10")
+					div(class="checkbox")
+						label Global Europe
+							input#global-na(type="checkbox", name="IG_Europe")
+			div(class="form-group")
+				div(class="col-xs-offset-2 col-xs-10")
+					div(class="checkbox")
+						label Global APAC
+							input#global-na(type="checkbox", name="IG_APAC")
+			br
+			div(class="form-group")
+				div(class="col-xs-offset-2 col-xs-10")
+					input#submit-new-url(type="submit", value='Submit',class="btn btn-primary",style="width: 100px;float: left;margin-right:15px;")
+			div(class="form-group")
+				div(class="col-xs-offset-2 col-xs-10")
+					input(type="reset", value='Reset',class="btn")
+			br
+			a(href="/") Home
 
 

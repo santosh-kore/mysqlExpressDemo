@@ -1,42 +1,7 @@
 extends layout
 
 block content
-	h1= title
-	form#new-wpt-entry-form(method="post", action="/wpturls/createUrl")
-		label(for="property-select") Property
-		select#property-select
-			each property in properties
-				option(value=property.PropertyName) #{property.PropertyName}
-		br
-		label(for="url") URL
-		input#url(type="url")
-		br
-		label
-			| WPT Location
-			input#wpt-location(type="text")
-		br
-		label
-			| Home Page
-			input#home-page(type="checkbox")
-		br
-		label
-			| Global NA
-			input#global-na(type="checkbox")
-		label
-			| Global Asia
-			input#global-asia(type="checkbox")
-		br
-		label
-			| Global Europe
-			input#global-europe(type="checkbox")
-		label
-			| Global APAC
-			input#global-apac(type="checkbox")
-		br
-		input(type="reset", value='Reset')
-		input(type="submit", value='Submit')
-
-		
-
-
-
+	a(href="/wpturls/new") Create New URL
+	br
+	br
+	a(href="/wpturls/searchURLs") Search URLs

@@ -2,59 +2,60 @@ extends layout
 
 block content
 	h1= title
-	form#edit-url-data(method="post",action="/wpturls/url/edit")
-		table
-			tr
-				td URL
-				td 
-					input(type="url",value="#{urlData.URL}",name="URL")
-			tr
-				td PropertyName
-				td 
-					input(type="text",value="#{urlData.PropertyName}",name="PropertyName")
-			tr
-				td wptLocation
-				td
-					input(type="text",value="#{urlData.wptLocation}",name="wptLocation")
-			tr
-				td Status
-				td
-					input(type="hidden", name="Status", value=0)
-					input(type="checkbox",checked="#{urlData.Status}"==="Y",name="Status")
-			tr
-				td HomePageURL
-				td
-					input(type="hidden", name="HomePageURL", value=0)
-					input(type="checkbox",checked="#{urlData.HomePageURL}"==="Y",name="HomePageURL")
-			tr
-				td Global NA
-				td
-					input(type="hidden", name="IG_NA", value=0)
-					input(type="checkbox",checked="#{urlData.IG_NA}"==="Y",name="IG_NA")
-			tr
-				td Global Asia
-				td
-					input(type="hidden", name="IG_Asia", value=0)
-					input(type="checkbox",checked="#{urlData.IG_Asia}"==="Y",name="IG_Asia")
-			tr
-				td Global APAC
-				td
-					input(type="hidden", name="IG_APAC", value=0)
-					input(type="checkbox",checked="#{urlData.IG_APAC}"==="Y",name="IG_APAC")
-			tr
-				td Global Europe
-				td
-					input(type="hidden", name="IG_Europe", value=0)
-					input(type="checkbox",checked="#{urlData.IG_Europe}"==="Y",name="IG_Europe")
-			tr
-				td
-				td
-					input(type="submit",value="Update")
+	form#edit-url-data-form(method="post",action="/wpturls/url/edit")
+		div(class="form-group")
+				label(for="url",class="control-label col-xs-2") URL
+				div(class="col-xs-10")
+					input#url(type="url", name="URL",class="form-control",value="#{urlData.URL}", required)
+		div(class="form-group")
+				label(for="PropertyName",class="control-label col-xs-2") PropertyName
+				div(class="col-xs-10")
+					input#PropertyName(type="text", name="PropertyName",class="form-control",value="#{urlData.PropertyName}", required)
+		div(class="form-group")
+				label(for="wptLocation",class="control-label col-xs-2") wptLocation
+				div(class="col-xs-10")
+					input#wptLocation(type="text", name="wptLocation",class="form-control",value="#{urlData.wptLocation}", required)
+		div(class="form-group")
+				div(class="col-xs-offset-2 col-xs-10")
+					div(class="checkbox")
+						label Status
+							input(type="hidden", name="Status", value=0)
+							input(type="checkbox",checked="#{urlData.Status}"==="Y",name="Status")
+		div(class="form-group")
+				div(class="col-xs-offset-2 col-xs-10")
+					div(class="checkbox")
+						label HomePageURL
+							input(type="hidden", name="HomePageURL", value=0)
+							input(type="checkbox",checked="#{urlData.HomePageURL}"==="Y",name="HomePageURL")
+		div(class="form-group")
+				div(class="col-xs-offset-2 col-xs-10")
+					div(class="checkbox")
+						label Global NA
+							input(type="hidden", name="IG_NA", value=0)
+							input(type="checkbox",checked="#{urlData.IG_NA}"==="Y",name="IG_NA")
+		div(class="form-group")
+				div(class="col-xs-offset-2 col-xs-10")
+					div(class="checkbox")
+						label Global Asia
+							input(type="hidden", name="IG_Asia", value=0)
+							input(type="checkbox",checked="#{urlData.IG_Asia}"==="Y",name="IG_Asia")
+		div(class="form-group")
+				div(class="col-xs-offset-2 col-xs-10")
+					div(class="checkbox")
+						label Global APAC
+							input(type="hidden", name="IG_APAC", value=0)
+							input(type="checkbox",checked="#{urlData.IG_APAC}"==="Y",name="IG_APAC")
+		div(class="form-group")
+				div(class="col-xs-offset-2 col-xs-10")
+					div(class="checkbox")
+						label Global Europe
+							input(type="hidden", name="IG_Europe", value=0)
+							input(type="checkbox",checked="#{urlData.IG_Europe}"==="Y",name="IG_Europe")
+		input#edit-url-data-submit(type="submit", value='Update',class="btn btn-primary")
 		input(type="hidden", name="ID", value="#{urlData.ID}")
 		input(type="hidden", name="_method", value="put")
 
-
-	a(href="/wpturls/getUrls?PropertyName=#{urlData.PropertyName}") Go Back
+	a(href="/wpturls/getUrls?PropertyName=#{urlData.PropertyName}") Go To URL List
 
 		
 
