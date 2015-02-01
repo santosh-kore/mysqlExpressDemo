@@ -8,6 +8,9 @@ router.get('/list', function(req, res) {
         res.json({
             'propertyList': properties
         });
+    }, function(error) {
+        res.location("error");
+        res.redirect("/error?errorMessage=" + JSON.stringify(error));
     });
 });
 
