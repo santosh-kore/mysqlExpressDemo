@@ -3,14 +3,16 @@ var should = require('should');
 
 describe('Test DB Connection', function() {
 
-    it('should pass the query', function() {
+    it('DB connection positive test with valid options', function(done) {
         connection = db.getDbConnection();
         connection.query('SELECT 1', function(err, rows) {
-            err.should.be.empty;
+            rows.should.be.ok;
+            (err === null).should.be.true;
+            done();
         });
     });
 
-    it('should not pass the query', function() {
+    it('DB connection negative test with invalid options', function(done) {
         connection = db.getDbConnection({
             host: 'pppdc9sssadprd0tl.corp.intuit.net',
             user: 'wptdashssboarasssssdd',
@@ -19,6 +21,7 @@ describe('Test DB Connection', function() {
         });
         connection.query('SELECT 1', function(err, rows) {
             err.should.not.be.empty;
+            done();
         });
     });
 

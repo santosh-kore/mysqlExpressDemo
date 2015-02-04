@@ -1,7 +1,8 @@
 var mysql = require('../lib/db_connection').getDbConnection();
 
 var dbUtils = {
-    getAllProperties: function(callback, errorCallback) {
+    getAllProperties: function(callback, errorCallback, customDbConnection) {
+        mysql = customDbConnection || mysql;
         mysql.query('SELECT * from PropertyList', function(err, rows, fields) {
             err ? errorCallback(err) : callback(rows); 
         });
