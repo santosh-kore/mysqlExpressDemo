@@ -42,10 +42,10 @@ var dbUtils = {
     updateURLData: function(postData, callback, errorCallback, customDbConnection) {
         mysql = customDbConnection || mysql;
     	for (var key in postData) {
-            if ((key === "HomePageURL" || key === "status" || key === "IG_NA" || key === "IG_Asia" || key === "IG_APAC" || key === "IG_Europe") && postData[key].length == 2 ) {
+            if ((key === "HomePageURL" || key === "Status" || key === "status" || key === "IG_NA" || key === "IG_Asia" || key === "IG_APAC" || key === "IG_Europe") && postData[key].length == 2 ) {
                 postData[key] = "Y";
             } 
-            if ((key === "HomePageURL" || key === "status" || key === "IG_NA" || key === "IG_Asia" || key === "IG_APAC" || key === "IG_Europe") && postData[key].length == 1 && postData[key] === "0") {
+            if ((key === "HomePageURL" || key === "Status" || key === "status" || key === "IG_NA" || key === "IG_Asia" || key === "IG_APAC" || key === "IG_Europe") && postData[key].length == 1 && postData[key] === "0") {
                 postData[key] = "N";
             }
         }
