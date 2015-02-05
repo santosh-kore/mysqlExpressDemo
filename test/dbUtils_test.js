@@ -10,7 +10,7 @@ var should = require('should');
 
 describe('Test all db operations', function() {
 
-    describe('Test getAllProperties method', function() {
+/*    describe('Test getAllProperties method', function() {
         it('fetch all properties list positive test', function(done) {
             dbUtils.getAllProperties(function(properties, err) {
                 properties.should.be.ok;
@@ -57,7 +57,7 @@ describe('Test all db operations', function() {
 
     describe('Test fetchURLsByProperty method', function() {
         newURLDummyData = {}
-        before(function() {
+        before(function(done) {
             newURLDummyData = {
                     PropertyName: 'DummyProp',
                     URL: 'http://www.w3schools.com/booststrap/bootstrap_ref_css_buttons.asp',
@@ -72,6 +72,7 @@ describe('Test all db operations', function() {
             dbUtils.createNewWPTUrl(newURLDummyData, function(data) {
                 data.should.be.ok;
                 newURLDummyData = data;
+                done();
             }, function(err) {}, correctDbConnection);
         });
 
@@ -103,11 +104,11 @@ describe('Test all db operations', function() {
 
             }, correctDbConnection);
         });
-    });
+    });*/
 
-/*    describe('Test fetchURLByID method', function() {
+    describe('Test fetchURLByID method', function() {
         newURLDummyData = {}
-        before(function() {
+        before(function(done) {
             newURLDummyData = {
                     PropertyName: 'DummyProp',
                     URL: 'http://www.w3schools.com/booststrap/bootstrap_ref_css_buttons.asp',
@@ -120,21 +121,20 @@ describe('Test all db operations', function() {
                 }
                 //Create dummy data for testing
             dbUtils.createNewWPTUrl(newURLDummyData, function(data) {
-                data.should.be.ok;
                 newURLDummyData = data;
-            }, function(err) {}, correctDbConnection);
-        });
-
-        it('Output data length should be 1', function(done) {
-            dbUtils.fetchURLByID(newURLDummyData.insertId, function(data, err) {
-                (data).should.not.be.empty;
                 done();
             }, function(err) {}, correctDbConnection);
         });
 
-        it('Output data length should be 0', function(done) {
+        it('Output data should not be empty', function(done) {
+            dbUtils.fetchURLByID(newURLDummyData.insertId, function(data, err) {
+                data.should.not.be.empty;
+                done();
+            }, function(err) {}, correctDbConnection);
+        });
+
+        it('Output data should be empty', function(done) {
             dbUtils.fetchURLByID((newURLDummyData.insertId + 1), function(data, err) {
-                console.log(data)
                 (data === undefined).should.be.true;
                 done();
             }, function(err) {}, correctDbConnection);
@@ -154,5 +154,5 @@ describe('Test all db operations', function() {
 
             }, correctDbConnection);
         });
-    });*/
+    });
 });
