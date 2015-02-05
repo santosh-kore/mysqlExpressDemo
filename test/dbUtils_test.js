@@ -10,7 +10,7 @@ var should = require('should');
 
 describe('Test all db operations', function() {
 
-/*    describe('Test getAllProperties method', function() {
+    describe('Test getAllProperties method', function() {
         it('fetch all properties list positive test', function(done) {
             dbUtils.getAllProperties(function(properties, err) {
                 properties.should.be.ok;
@@ -104,7 +104,7 @@ describe('Test all db operations', function() {
 
             }, correctDbConnection);
         });
-    });*/
+    });
 
     describe('Test fetchURLByID method', function() {
         newURLDummyData = {}
