@@ -10,7 +10,7 @@ router.get('/list', function(req, res) {
         });
     }, function(error) {
         res.location("error");
-        res.redirect("/error?errorMessage=" + JSON.stringify(error));
+        res.redirect("/error?errorMessage=Error while serving the request try again"/* + JSON.stringify(error)*/);
     });
 });
 
