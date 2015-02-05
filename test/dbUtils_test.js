@@ -140,7 +140,7 @@ describe('Test all db operations', function() {
             }, function(err) {}, correctDbConnection);
         });
 
-        it('Fetch URL by property name negative test', function(done) {
+        it('Fetch URL by ID negative test', function(done) {
             dbUtils.fetchURLByID(newURLDummyData.insertId, function(properties, err) {}, function(err) {
                 err.should.not.be.empty;
                 done();
@@ -153,6 +153,48 @@ describe('Test all db operations', function() {
             }, function(properties, err) {}, function(err) {
 
             }, correctDbConnection);
+        });
+    });
+
+    describe('Test deleteURLByID method', function() {
+        newURLDummyData = {}
+        before(function(done) {
+            newURLDummyData = {
+                    PropertyName: 'DummyProp',
+                    URL: 'http://www.w3schools.com/booststrap/bootstrap_ref_css_buttons.asp',
+                    wptLocation: 'MyLocation',
+                    HomePageURL: 'Y',
+                    IG_NA: 'Y',
+                    IG_Asia: 'Y',
+                    IG_Europe: 'Y',
+                    IG_APAC: 'Y'
+                }
+                //Create dummy data for testing
+            dbUtils.createNewWPTUrl(newURLDummyData, function(data) {
+                newURLDummyData = data;
+                done();
+            }, function(err) {}, correctDbConnection);
+        });
+
+        it('Output data should not be empty', function(done) {
+            dbUtils.deleteURLByID({
+                "id": newURLDummyData.insertId
+            }, function(result, err) {
+                result.should.not.be.empty;
+                done();
+            }, function(err) {
+
+            }, correctDbConnection);
+        });
+
+        it('Error should not be empty', function(done) {
+            dbUtils.deleteURLByID({
+                "id": newURLDummyData.insertId
+            }, function(result, err) {
+            }, function(err) {
+                err.should.not.be.empty;
+                done();
+            }, inCorrectDbConnection);
         });
     });
 });
